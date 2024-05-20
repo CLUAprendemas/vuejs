@@ -1,0 +1,36 @@
+<html>
+
+<head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<title>Practica con Vue</title>
+</head>
+<body>
+
+    <div class="container mt-5" id="app">
+        <h4>{{ message }}</h4>
+
+        <input type="text" class="form-control my-3" v-model="nuevaTarea" v-on:keyup.enter="agregarTarea">
+
+        <button class="btn btn-primary" @click="agregarTarea">Agregar</button>
+
+        <div class="mt-3" v-for="(item, index) of tareas">
+
+            <div role="alert" :class="['alert' , item.estado ? 'alert-success' : 'alert-danger']">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        {{index}} - {{item.nombre}} - {{item.estado ? 'Atendido' : 'Pendiente'}} 
+                    </div>
+                    <div>
+                        <button class="btn btn-success btn-sm" @click="editarTarea(index)">Atendido</button>
+                        <button class="btn btn-danger btn-sm" @click="eliminar(index)">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="vue.js"></script>
+</body>
+
+</html>
